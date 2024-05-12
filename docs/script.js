@@ -41,4 +41,27 @@ function createRecentRoundsTable(rounds) {
     return table;
 }
 
+function createTable(round) {
+    // Start building the table with Bootstrap classes
+    let table = '<table class="table table-striped">';
+    // Add table headers
+    table += '<thead class="thead-dark"><tr>';
+    table += '<th scope="col">Attribute</th><th scope="col">Value</th>';
+    table += '</tr></thead>';
+    // Start the table body
+    table += '<tbody>';
+    
+    // Iterate over the round object properties
+    Object.entries(round).forEach(([key, value]) => {
+        table += '<tr>';
+        table += `<td>${key}</td>`;
+        table += `<td>${value}</td>`;
+        table += '</tr>';
+    });
+    
+    table += '</tbody></table>';
+    // Return the completed table HTML
+    return table;
+}
+
 fetchData();
