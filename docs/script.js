@@ -1,5 +1,5 @@
 async function fetchData() {
-    const ExpressEntryLink = "https://www.canada.ca/content/dam/ircc/documents/json/ee_rounds_123_en.json#/rounds"
+    const ExpressEntryLink = 'https://www.canada.ca/content/dam/ircc/documents/json/ee_rounds_123_en.json#/rounds'
 
     try {
         const response = await fetch(ExpressEntryLink + '/data.json');
