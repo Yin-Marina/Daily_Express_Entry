@@ -1,7 +1,8 @@
 document.addEventListener('DOMContentLoaded', function() {
     async function fetchData() {
         try {
-            const response = await fetch('https://your-json-link.com/data.json');
+
+            const response = await fetch('https://www.canada.ca/content/dam/ircc/documents/json/ee_rounds_123_en.json#/rounds/data.json');
             const data = await response.json();
             displayData(data);
             displayRecentRounds(data.rounds);
