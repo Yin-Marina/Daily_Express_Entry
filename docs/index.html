@@ -9,20 +9,38 @@
         body {
             padding: 20px;
         }
-        #data-container {
+        #data-container, #summary-container {
             margin-top: 20px;
-            white-space: pre-wrap;
+        }
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .main-section {
+            flex: 3;
+            padding-right: 20px;
+        }
+        .sidebar {
+            flex: 1;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="jumbotron text-center">
-            <h1>Daily Express Entry Page</h1>
-            <p class="lead">This page displays latest Express Entry Draw to date.</p>
+        <div class="main-section">
+            <div class="jumbotron text-center">
+                <h1>Express Entry Data Display Page</h1>
+                <p class="lead">This page displays data fetched from IRCC website.</p>
+            </div>
+            <div id="data-container" class="bg-light p-3 border rounded">
+                Loading data...
+            </div>
         </div>
-        <div id="data-container" class="bg-light p-3 border rounded">
-            Loading data...
+        <div class="sidebar">
+            <h2>Latest 10 Rounds</h2>
+            <div id="summary-container" class="bg-light p-3 border rounded">
+                Loading summary...
+            </div>
         </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
