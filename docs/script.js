@@ -1,11 +1,10 @@
-
 async function fetchData() {
     try {
         const ExpressEntryLink = 'https://www.canada.ca/content/dam/ircc/documents/json/ee_rounds_123_en.json#/rounds';
         const response = await fetch(ExpressEntryLink + '/data.json');
         const data = await response.json();
         displayData(data);
-        //displayRecentRounds(data.rounds);
+        displayRecentRounds(data.rounds);
     } catch (error) {
         document.getElementById('data-container').innerHTML = '<div class="alert alert-danger" role="alert">Error loading data.</div>';
         document.getElementById('recent-rounds').innerHTML = '<div class="alert alert-danger" role="alert">Error loading rounds data.</div>';
