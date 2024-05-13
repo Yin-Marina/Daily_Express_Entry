@@ -1,8 +1,11 @@
 document.addEventListener('DOMContentLoaded', function() {
     async function fetchData() {
         try {
-
-            const response = await fetch('https://www.canada.ca/content/dam/ircc/documents/json/ee_rounds_123_en.json#/rounds/data.json');
+            // Replace with your actual JSON URL
+            const response = await fetch('https://www.canada.ca/content/dam/ircc/documents/json/ee_rounds_123_en.json#/rounds');
+            if (!response.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}`);
+            }
             const data = await response.json();
             displayData(data);
             displayRecentRounds(data.rounds);
@@ -29,6 +32,24 @@ document.addEventListener('DOMContentLoaded', function() {
         } else {
             container.innerHTML = '<div class="alert alert-warning" role="alert">No recent rounds available.</div>';
         }
+    }
+
+    function createTable(round) {
+        let table = '<table class="table table-striped">';
+        table += '<thead class="thead-dark"><tr>';
+        table += '<th scope="col">Attribute</th><th scope="col">Value</th>';
+        table += '</tr></thead>';
+        table += '<tbody>';
+        
+        Object.entries(round).forEach(([key, value]) => {
+            table += '<tr>';
+            table += `<td>${key}</td>`;
+            table += `<td>${value}</td>`;
+            table += '</tr>';
+        });
+        
+        table += '</tbody></table>';
+        return table;
     }
 
     function createRecentRoundsTable(rounds) {
