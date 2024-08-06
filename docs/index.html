@@ -4,19 +4,48 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Data Display Page</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
+            padding: 20px;
         }
-        #data-container {
+        #data-container, #summary-container {
             margin-top: 20px;
+        }
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .main-section {
+            flex: 3;
+            padding-right: 20px;
+        }
+        .sidebar {
+            flex: 1;
         }
     </style>
 </head>
 <body>
-    <h1>Data Display Page</h1>
-    <div id="data-container">Loading data...</div>
-    <script src="script.js"></script>
+    <div class="container">
+        <div class="main-section">
+            <div class="jumbotron text-center">
+                <h1>Express Entry Data Display Page</h1>
+                <p class="lead">This page displays data fetched from IRCC website.</p>
+            </div>
+            <div id="data-container" class="bg-light p-3 border rounded">
+                Loading data...
+            </div>
+        </div>
+        <div class="sidebar">
+            <h2>Latest 10 Rounds</h2>
+            <div id="recent-rounds" class="bg-light p-3 border rounded">
+                Loading summary...
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="./script.js"></script>
 </body>
 </html>
