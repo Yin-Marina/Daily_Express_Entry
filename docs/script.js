@@ -44,6 +44,10 @@ document.addEventListener('DOMContentLoaded', function() {
         Object.entries(round).forEach(([key, value]) => {
             table += '<tr>';
             table += `<td>${key}</td>`;
+            if ((key === 'mitext' || key === 'DrawText1') && typeof value === 'string') {
+                // If the key is 'mitext' or 'DrawText1', prepend "https://www.canada.ca/" to the href
+                value = value.replace(/href="(.*?)"/g, 'href="https://www.canada.ca/$1"');
+            }
             table += `<td>${value}</td>`;
             table += '</tr>';
         });
