@@ -45,8 +45,8 @@ document.addEventListener('DOMContentLoaded', function() {
             table += '<tr>';
             table += `<td>${key}</td>`;
             if ((key === 'mitext' || key === 'DrawText1') && typeof value === 'string') {
-                // Modify the value by prepending "https://www.canada.ca/" to href attributes
-                value = value.replace(/href="(.*?)"/g, 'href="https://www.canada.ca/$1"');
+                // Modify the href attribute by prepending "https://www.canada.ca" if it starts with "/"
+                value = value.replace(/href='\/(.*?)'/g, 'href=\'https://www.canada.ca/$1\'');
             }
             table += `<td>${value}</td>`;
             table += '</tr>';
