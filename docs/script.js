@@ -44,7 +44,7 @@ document.addEventListener('DOMContentLoaded', function() {
         Object.entries(round).forEach(([key, value]) => {
             table += '<tr>';
             table += `<td>${key}</td>`;
-            if ((key === 'mitext' || key === 'DrawText1') && typeof value === 'string') {
+            if ((key === 'drawNumberURL' || key === 'mitext' || key === 'DrawText1') && typeof value === 'string') {
                 // Modify the href attribute by prepending "https://www.canada.ca" if it starts with "/"
                 value = value.replace(/href='\/(.*?)'/g, 'href=\'https://www.canada.ca/$1\'');
             }
