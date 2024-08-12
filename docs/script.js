@@ -45,7 +45,7 @@ document.addEventListener('DOMContentLoaded', function() {
             table += '<tr>';
             table += `<td>${key}</td>`;
             if ((key === 'mitext' || key === 'DrawText1') && typeof value === 'string') {
-                // If the key is 'mitext' or 'DrawText1', prepend "https://www.canada.ca/" to the href
+                // Modify the value by prepending "https://www.canada.ca/" to href attributes
                 value = value.replace(/href="(.*?)"/g, 'href="https://www.canada.ca/$1"');
             }
             table += `<td>${value}</td>`;
