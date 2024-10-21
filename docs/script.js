@@ -73,39 +73,60 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // JSON data
 
-const drawDates = data.rounds.map(round => round.drawDate);
-const drawSizes = data.rounds.map(round => parseInt(round.drawSize));
-const drawCRS = data.rounds.map(round => parseInt(round.drawCRS));
 
-// Create the chart
-const ctx = document.getElementById('drawChart').getContext('2d');
-const drawChart = new Chart(ctx, {
+  
+  // Extract the necessary data from JSON for the chart
+  const drawDates = data.rounds.map(round => round.drawDate);
+  const drawSizes = data.rounds.map(round => parseInt(round.drawSize));
+  const drawCRS = data.rounds.map(round => parseInt(round.drawCRS));
+  
+  // Create the bar chart using Plotly
+  const trace1 = {
+    x: drawDates,  // X-axis data (draw dates)
+    y: drawSizes,  // Y-axis data for Draw Sizes
+    name: 'Draw Size',
     type: 'bar',
-    data: {
-        labels: drawDates,  // Dates of the draws
-        datasets: [
-            {
-                label: 'Draw Size',
-                data: drawSizes,  // Draw sizes for each round
-                backgroundColor: 'rgba(75, 192, 192, 0.2)',
-                borderColor: 'rgba(75, 192, 192, 1)',
-                borderWidth: 1
-            },
-            {
-                label: 'CRS Score',
-                data: drawCRS,  // CRS scores for each round
-                backgroundColor: 'rgba(153, 102, 255, 0.2)',
-                borderColor: 'rgba(153, 102, 255, 1)',
-                borderWidth: 1
-            }
-        ]
-    },
-    options: {
-        scales: {
-            y: {
-                beginAtZero: true  // Ensures the y-axis starts from zero
-            }
-        }
+    marker: {
+      color: 'rgba(75, 192, 192, 0.7)',
+      line: {
+        color: 'rgba(75, 192, 192, 1)',
+        width: 1.5
+      }
     }
-});
+  };
+  
+  const trace2 = {
+    x: drawDates,  // X-axis data (draw dates)
+    y: drawCRS,    // Y-axis data for CRS Scores
+    name: 'CRS Score',
+    type: 'bar',
+    marker: {
+      color: 'rgba(153, 102, 255, 0.7)',
+      line: {
+        color: 'rgba(153, 102, 255, 1)',
+        width: 1.5
+      }
+    }
+  };
+  
+  // Layout for the chart
+  const layout = {
+    title: 'Express Entry Draws Comparison',
+    barmode: 'group',  // Group the bars together
+    xaxis: {
+      title: 'Draw Date',
+      tickangle: -45
+    },
+    yaxis: {
+      title: 'Values',
+      showgrid: true,
+      zeroline: true
+    }
+  };
+  
+  // Data array containing both traces
+  const chartData = [trace1, trace2];
+  
+  // Render the chart in the 'drawChart' div
+  Plotly.newPlot('drawChart', chartData, layout);
   
