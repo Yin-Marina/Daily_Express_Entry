@@ -95,19 +95,21 @@ document.addEventListener('DOMContentLoaded', function() {
     x: drawDates,  // X-axis data (draw dates)
     y: drawCRS,    // Y-axis data for CRS Scores
     name: 'CRS Score',
-    type: 'bar',
-    marker: {
-      color: 'rgba(153, 102, 255, 0.7)',
-      line: {
+    type: 'acatter',
+    mode: 'lines+markers',  // Line with markers
+    line: {
         color: 'rgba(153, 102, 255, 1)',
-        width: 1.5
-      }
+        width: 2
+    },
+    marker: {
+        color: 'rgba(153, 102, 255, 1)',
+        size: 8
     }
   };
   
   // Layout for the chart
   const layout = {
-    title: 'Express Entry Draws Comparison',
+    title: 'Express Entry Draws Comparison (Line Chart)',
     barmode: 'group',  // Group the bars together
     xaxis: {
       title: 'Draw Date',
