@@ -67,11 +67,7 @@ document.addEventListener('DOMContentLoaded', function() {
         return table;
     }
 
-    fetchData();
-});
-
-
-// JSON data
+    // JSON data
 
 
   
@@ -129,4 +125,10 @@ document.addEventListener('DOMContentLoaded', function() {
   
   // Render the chart in the 'drawChart' div
   Plotly.newPlot('drawChart', chartData, layout);
+
+    fetchData();
+});
+
+
+
   
