@@ -64,8 +64,9 @@
 }
 
 /* spacing on all sections */
+#title
 #main-section,
-#skills,
+#data-container,
 #bgimage,
 #contact {
   margin-top: 4rem;
