@@ -30,7 +30,7 @@
 document.addEventListener('DOMContentLoaded', function() {
     async function fetchData() {
         try {
-            const response = await fetch('https://www.canada.ca/content/dam/ircc/documents/json/ee_rounds_123_en.json/');
+            const response = await fetch('https://www.canada.ca/content/dam/ircc/documents/json/ee_rounds_123_en.json');
             if (!response.ok) {
                 throw new Error(`HTTP error! Status: ${response.status}`);
             }
