@@ -51,13 +51,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
             displayChart(data);  // Call to display the chart using fetched data
         } catch (error) {
-        document.getElementById('data-container').innerHTML = '<div class="alert alert-danger" role="alert">Error loading data.</div>';
-        document.getElementById('recent-rounds').innerHTML = '<div class="alert alert-danger" role="alert">Error loading rounds data.</div>';
-        console.error('Error fetching data:', error);
-    } // Call to display the chart using fetched data
-        } catch (error) {
-            document.getElementById('data-container').innerHTML = '<div class="alert alert-danger" role="alert">Error loading data.</div>';
-            document.getElementById('recent-rounds').innerHTML = '<div class="alert alert-danger" role="alert">Error loading rounds data.</div>';
+            // document.getElementById('data-container').innerHTML = '<div class="alert alert-danger" role="alert">Error loading data.</div>';
+            // document.getElementById('recent-rounds').innerHTML = '<div class="alert alert-danger" role="alert">Error loading rounds data.</div>';
             console.error('Error fetching data:', error);
         }
     }
