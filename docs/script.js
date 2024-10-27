@@ -35,6 +35,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 throw new Error(`HTTP error! Status: ${response.status}`);
             }
             const data = await response.json();
+            console.log(data);
             displayData(data);
             displayRecentRounds(data.rounds);
             displayChart(data);  // Call to display the chart using fetched data
