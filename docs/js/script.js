@@ -6,7 +6,7 @@
 //         try {
 //             // Fetching JSON data from the provided URL
 //             const response = await fetch('https://www.canada.ca/content/dam/ircc/documents/json/ee_rounds_123_en.json');
-            
+
 //             // Check if the response is OK
 //             if (!response.ok) {
 //                 throw new Error(`HTTP error! Status: ${response.status}`);
@@ -27,7 +27,7 @@
 //     fetchJSON();
 // });
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     async function fetchData() {
         try {
             const response = await fetch('https://www.canada.ca/content/dam/ircc/documents/json/ee_rounds_123_en.json');
@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 displayRecentRounds(data.rounds);
             } else {
                 console.log('Element with id "recent-rounds" not found');
-            }   
+            }
 
             displayChart(data);  // Call to display the chart using fetched data
         } catch (error) {
@@ -144,9 +144,10 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         };
 
-        // Layout for the chart
+        // Layout for the chart with autosizing
         const layout = {
             title: 'Express Entry Draws Comparison (Line Chart)',
+            autosize: true,  // Allow the chart to automatically size itself
             xaxis: {
                 title: 'Draw Date',
                 tickangle: -45
