@@ -2,7 +2,7 @@
 .bgimage {
   height: 100vh;
   background-color: rgb(0, 0, 0, 0.5);
-  background: url('./images/desktop.jpg') no-repeat; */
+  background: url('../images/desktop.jpg') no-repeat; */
   background-size: cover;
   position: relative;
 
