@@ -1,0 +1,53 @@
+name: Weekly Data Extraction
+
+# Trigger this workflow every week on Monday at 1:00 AM UTC
+on:
+  schedule:
+    - cron: '0 1 * * 1'  # This cron expression means every Monday at 1:00 AM UTC
+
+  # Optionally, you can also allow manual triggering
+  workflow_dispatch:
+
+jobs:
+  extract:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Checkout the repository
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      # Set up any dependencies or programming environment needed for data extraction
+      - name: Set up Python
+        uses: actions/setup-python@v3
+        with:
+          python-version: '3.x'  # Use your desired Python version
+
+      # Install dependencies (if needed, for example, from requirements.txt)
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      # Run the data extraction script (replace 'extract_data.py' with your script name)
+      - name: Run data extraction script
+        run: |
+          python extract_data.py  # This is the script where your data extraction logic resides
+
+      # Optionally: Upload the extracted data as an artifact
+      - name: Upload extracted data
+        uses: actions/upload-artifact@v3
+        with:
+          name: extracted-data
+          path: path/to/extracted/data  # Replace with the path to your extracted data
+
+      # Optionally: Commit extracted data back to the repository
+      - name: Commit extracted data
+        run: |
+          git config --local user.name "github-actions[bot]"
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git add path/to/extracted/data
+          git commit -m "Automated weekly data extraction"
+          git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
