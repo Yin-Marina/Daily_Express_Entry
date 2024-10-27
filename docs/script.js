@@ -30,7 +30,7 @@
 document.addEventListener('DOMContentLoaded', function() {
     async function fetchData() {
         try {
-            const response = await fetch('https://www.canada.ca/content/dam/ircc/documents/json/ee_rounds_123_en.json#/rounds');
+            const response = await fetch('https://www.canada.ca/content/dam/ircc/documents/json/ee_rounds_123_en.json/');
             if (!response.ok) {
                 throw new Error(`HTTP error! Status: ${response.status}`);
             }
@@ -120,7 +120,7 @@ document.addEventListener('DOMContentLoaded', function() {
             x: drawDates,  // X-axis data (draw dates)
             y: drawCRS,    // Y-axis data for CRS Scores
             name: 'CRS Score',
-            type: 'scatter',  // Fix typo: should be 'scatter' not 'acatter'
+            type: 'scatter',  // 
             mode: 'lines+markers',  // Line with markers
             line: {
                 color: 'rgba(153, 102, 255, 1)',
