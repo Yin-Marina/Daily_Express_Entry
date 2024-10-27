@@ -148,6 +148,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const layout = {
             title: 'Express Entry Draws Comparison (Line Chart)',
             autosize: true,  // Allow the chart to automatically size itself
+            height:800, 
             xaxis: {
                 title: 'Draw Date',
                 tickangle: -45
