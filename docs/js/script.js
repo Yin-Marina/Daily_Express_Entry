@@ -35,10 +35,26 @@ document.addEventListener('DOMContentLoaded', function() {
                 throw new Error(`HTTP error! Status: ${response.status}`);
             }
             const data = await response.json();
-            console.log(data);
-            displayData(data);
-            displayRecentRounds(data.rounds);
+            const dataContainer = document.getElementById('data-container');
+            if (dataContainer) {
+                displayData(data);
+            } else {
+                console.error('Element with id "data-container" not found');
+            }
+
+            const recentRoundsContainer = document.getElementById('recent-rounds');
+            if (recentRoundsContainer) {
+                displayRecentRounds(data.rounds);
+            } else {
+                console.error('Element with id "recent-rounds" not found');
+            }   
+
             displayChart(data);  // Call to display the chart using fetched data
+        } catch (error) {
+        document.getElementById('data-container').innerHTML = '<div class="alert alert-danger" role="alert">Error loading data.</div>';
+        document.getElementById('recent-rounds').innerHTML = '<div class="alert alert-danger" role="alert">Error loading rounds data.</div>';
+        console.error('Error fetching data:', error);
+    } // Call to display the chart using fetched data
         } catch (error) {
             document.getElementById('data-container').innerHTML = '<div class="alert alert-danger" role="alert">Error loading data.</div>';
             document.getElementById('recent-rounds').innerHTML = '<div class="alert alert-danger" role="alert">Error loading rounds data.</div>';
