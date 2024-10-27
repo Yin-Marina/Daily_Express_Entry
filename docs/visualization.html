@@ -1,18 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Data Display Page</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,900&display=swap"
-      rel="stylesheet">
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="./css/styles.css">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Data Display Page</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,900&display=swap"
+    rel="stylesheet">
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="./css/styles.css">
 </head>
+
 <body>
   <header>
     <nav class="navbar navbar-expand-lg fixed-top navbarScroll bg-secondary">
@@ -39,93 +41,96 @@
       </div>
     </nav>
   </header>
-    
-    <div class="container">
-        <div class="main-section mt-5">
-            <div id='title' class="jumbotron mt-8 text-center container-fluid text-center">
-                <h1>Express Entry Data Visualization Page</h1>
-                <p class="lead">This page visualize the data from Express Entry program.</p>
-            </div>
-            <div id="drawChart" class='mb-4' style="width:100%;max:width 100%;height:60%;">
 
-            </div>
-        </div>
+  <div class="container">
+    <div class="main-section mt-5">
+      <div id='title' class="jumbotron mt-8 text-center container-fluid text-center">
+        <h1>Express Entry Data Visualization Page</h1>
+        <p class="lead">This page visualize the data from Express Entry program.</p>
+      </div>
+      <div class="jumbotron">
+        <div id="drawChart" class='mb-4' style="width:100%;max:width 100%;height:60%;"></div>
+
+
+      </div>
     </div>
-    <footer class="text-center text-lg-start text-white">
-      <!-- Grid container -->
-      <div class="container p-4 pb-4">
-        <!-- Section: Links -->
-        <section class="">
-          <!--Grid row-->
-          <div class="row">
-            <!-- Grid column -->
-            <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
-              <h6 class="text-uppercase mb-4 font-weight-bold">
-                Mutao Yin
-              </h6>
-              <p>
-                Open to work
-              </p>
-            </div>
-            <!-- Grid column -->
-  
-            <hr class="w-100 clearfix d-md-none" />
-  
-            <!-- Grid column -->
-            <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
-              <h6 class="text-uppercase mb-4 font-weight-bold">Links</h6>
-              <p>
-                <a class="text-white" href="./lastest-draw.html">Latest Draw</a>
-              </p>
-              <p>
-                <a class="text-white" href="./visualization.html">Chart</a>
-              </p>
-              <p>
-                <a class="text-white" href="./recent-rounds.html">Recent Rounds</a>
-              </p>
-            </div>
-            <!-- Grid column -->
-  
-            <hr class="w-100 clearfix d-md-none" />
-  
-            <!-- Grid column -->
-            <hr class="w-100 clearfix d-md-none" />
-  
-            <!-- Grid column -->
-            <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
-              <h6 class="text-uppercase mb-4 font-weight-bold">Contact</h6>
-              <p><i class="fas fa-home mr-3"></i> Ottawa, ON, CA</p>
-              <p><i class="fas fa-envelope mr-3"></i> mutao.me@gmail.com</p>
-            </div>
-            <!-- Grid column -->
-  
-            <!-- Grid column -->
-            <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3 social-network">
-              <h6 class="text-uppercase mb-4 font-weight-bold">Follow me</h6>
-              <!-- Linkedin -->
-              <p> <a class="text-white" href="https://www.linkedin.com/in/mutao-yin/" role="button">LinkedIn
-                </a></p>
-              <!-- Github -->
-              <p><a class="text-white" href="https://github.com/Yin-Marina" role="button">Github</a></p>
-            </div>
+  </div>
+  <footer class="text-center text-lg-start text-white">
+    <!-- Grid container -->
+    <div class="container p-4 pb-4">
+      <!-- Section: Links -->
+      <section class="">
+        <!--Grid row-->
+        <div class="row">
+          <!-- Grid column -->
+          <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
+            <h6 class="text-uppercase mb-4 font-weight-bold">
+              Mutao Yin
+            </h6>
+            <p>
+              Open to work
+            </p>
           </div>
-          <!--Grid row-->
-        </section>
-        <!-- Section: Links -->
-      </div>
-      <!-- Grid container -->
-  
-      <!-- Copyright -->
-      <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2)">
-        © 2023 Copyright:
-        <p class="text-white">Mutao Yin</p>
-      </div>
-      <!-- Copyright -->
-    </footer>
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-    <script src="./js/script.js"></script>
+          <!-- Grid column -->
+
+          <hr class="w-100 clearfix d-md-none" />
+
+          <!-- Grid column -->
+          <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
+            <h6 class="text-uppercase mb-4 font-weight-bold">Links</h6>
+            <p>
+              <a class="text-white" href="./lastest-draw.html">Latest Draw</a>
+            </p>
+            <p>
+              <a class="text-white" href="./visualization.html">Chart</a>
+            </p>
+            <p>
+              <a class="text-white" href="./recent-rounds.html">Recent Rounds</a>
+            </p>
+          </div>
+          <!-- Grid column -->
+
+          <hr class="w-100 clearfix d-md-none" />
+
+          <!-- Grid column -->
+          <hr class="w-100 clearfix d-md-none" />
+
+          <!-- Grid column -->
+          <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
+            <h6 class="text-uppercase mb-4 font-weight-bold">Contact</h6>
+            <p><i class="fas fa-home mr-3"></i> Ottawa, ON, CA</p>
+            <p><i class="fas fa-envelope mr-3"></i> mutao.me@gmail.com</p>
+          </div>
+          <!-- Grid column -->
+
+          <!-- Grid column -->
+          <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3 social-network">
+            <h6 class="text-uppercase mb-4 font-weight-bold">Follow me</h6>
+            <!-- Linkedin -->
+            <p> <a class="text-white" href="https://www.linkedin.com/in/mutao-yin/" role="button">LinkedIn
+              </a></p>
+            <!-- Github -->
+            <p><a class="text-white" href="https://github.com/Yin-Marina" role="button">Github</a></p>
+          </div>
+        </div>
+        <!--Grid row-->
+      </section>
+      <!-- Section: Links -->
+    </div>
+    <!-- Grid container -->
+
+    <!-- Copyright -->
+    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2)">
+      © 2023 Copyright:
+      <p class="text-white">Mutao Yin</p>
+    </div>
+    <!-- Copyright -->
+  </footer>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  <script src="./js/script.js"></script>
 </body>
+
 </html>
