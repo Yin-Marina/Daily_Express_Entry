@@ -41,22 +41,17 @@
       </div>
     </nav>
   </header>
-
-  <div class="container">
-    <div class="main-section mt-8">
-      <div id='title' class="mt-8 jumbotron text-center container-fluid text-center">
-        <h1>Express Entry Data Visualization Page</h1>
-        <p class="lead">This page visualize the data from Express Entry program.</p>
-      </div>
-      <div class="jumbotron-fluid">
-        <div id="drawChart" style="width:100%;height: 1000px;">
-
+  <div class="container-fluid">
+    <div class="main-section">
+        <div id="title" class="jumbotron text-center mt-4 container-fluid text-center title">
+            <h1>Express Entry Data Visualization Page</h1>
+            <p class="lead">This page visualize the data from Express Entry program.</p>
         </div>
-
-
-      </div>
+        <div id="data-container" class="bg-light p-3 mb-4 border rounded "style="width:100%;height: 800px;">
+            Loading data...
+        </div>
     </div>
-  </div>
+</div>
   <footer class="text-center text-lg-start text-white">
     <!-- Grid container -->
     <div class="container p-4 pb-4">
