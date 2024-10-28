@@ -182,7 +182,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // Layout for the chart with autosizing
         const CEC_layout = {
-            title: 'Express Entry Draws Comparison (Line Chart)',
+            title: 'Canadian Experience Class Express Entry Draws Comparison (Line Chart)',
             autosize: true,  // Allow the chart to automatically size itself
             height: 800,     // Set the minimum height to 800px
             xaxis: {
