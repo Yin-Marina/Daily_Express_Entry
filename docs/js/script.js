@@ -158,7 +158,7 @@ document.addEventListener('DOMContentLoaded', function () {
             marker: {
                 color: 'rgba(75, 192, 192, 0.7)',
                 line: {
-                    color: 'rgba(75, 192, 192, 1)',
+                    color: 'rgba(75, 192, 192, 2)',
                     width: 1.5
                 }
             }
