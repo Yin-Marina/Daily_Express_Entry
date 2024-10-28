@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', function () {
             const dataContainer = document.getElementById('data-container');
             if (dataContainer) {
                 displayData(data);
+                displayCECChart(data);
             } else {
                 console.log('Element with id "data-container" not found');
             }
@@ -138,15 +139,15 @@ document.addEventListener('DOMContentLoaded', function () {
         // Render the chart in the 'drawChart' div
         Plotly.newPlot('drawChart', chartData, layout);
     }
-    function displayChart(data) {
+    function displayCECChart(data) {
         // Display filtered rounds where drawText2 contains "Canadian Experience Class"
         const CECfilteredRounds = data.rounds.filter(round => round.drawText2.includes("Canadian Experience Class"));
         console.log('CEC Filtered Rounds:', CECfilteredRounds);
 
-        // Extract the necessary data from JSON for the chart
-        const drawDates = CECfilteredRounds.rounds.map(round => round.drawDate);
-        const drawSizes = CECfilteredRounds.rounds.map(round => parseInt(round.drawSize));
-        const drawCRS = CECfilteredRounds.rounds.map(round => parseInt(round.drawCRS));
+        // Extract the necessary data from the array for the chart
+        const drawDates = CECfilteredRounds.map(round => round.drawDate);
+        const drawSizes = CECfilteredRounds.map(round => parseInt(round.drawSize));
+        const drawCRS = CECfilteredRounds.map(round => parseInt(round.drawCRS));
 
         // Create the bar chart using Plotly
         const trace1 = {
@@ -201,6 +202,8 @@ document.addEventListener('DOMContentLoaded', function () {
         // Render the chart in the 'drawChart' div
         Plotly.newPlot('drawCECChart', chartData, layout);
     }
+
+
 
     // Fetch data when DOM is fully loaded
     fetchData();
