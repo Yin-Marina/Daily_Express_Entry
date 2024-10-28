@@ -144,9 +144,9 @@ document.addEventListener('DOMContentLoaded', function () {
         console.log('CEC Filtered Rounds:', CECfilteredRounds);
 
         // Extract the necessary data from JSON for the chart
-        const drawDates = data.rounds.map(round => round.drawDate);
-        const drawSizes = data.rounds.map(round => parseInt(round.drawSize));
-        const drawCRS = data.rounds.map(round => parseInt(round.drawCRS));
+        const drawDates = CECfilteredRounds.rounds.map(round => round.drawDate);
+        const drawSizes = CECfilteredRounds.rounds.map(round => parseInt(round.drawSize));
+        const drawCRS = CECfilteredRounds.rounds.map(round => parseInt(round.drawCRS));
 
         // Create the bar chart using Plotly
         const trace1 = {
