@@ -7,9 +7,6 @@ document.addEventListener('DOMContentLoaded', function () {
             }
             const data = await response.json();
 
-            // Display filtered rounds where drawText2 contains "Canadian Experience Class"
-            const CECfilteredRounds = data.rounds.filter(round => round.drawText2.includes("Canadian Experience Class"));
-            console.log('CEC Filtered Rounds:', CECfilteredRounds); // For debugging purposes
 
             const dataContainer = document.getElementById('data-container');
             if (dataContainer) {
@@ -141,7 +138,11 @@ document.addEventListener('DOMContentLoaded', function () {
         // Render the chart in the 'drawChart' div
         Plotly.newPlot('drawChart', chartData, layout);
     }
-    function displayChart(CECfilteredRounds) {
+    function displayChart(data) {
+        // Display filtered rounds where drawText2 contains "Canadian Experience Class"
+        const CECfilteredRounds = data.rounds.filter(round => round.drawText2.includes("Canadian Experience Class"));
+        console.log('CEC Filtered Rounds:', CECfilteredRounds);
+
         // Extract the necessary data from JSON for the chart
         const drawDates = data.rounds.map(round => round.drawDate);
         const drawSizes = data.rounds.map(round => parseInt(round.drawSize));
