@@ -197,7 +197,7 @@ document.addEventListener('DOMContentLoaded', function () {
         };
 
         // Data array containing both traces
-        const CEC_chartData = [trace1, trace2];
+        const CEC_chartData = [CEC_trace1, CEC_trace2];
 
         // Render the chart in the 'drawChart' div
         Plotly.newPlot('drawCECChart', CEC_chartData, layout);
