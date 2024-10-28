@@ -64,7 +64,11 @@
 }
 
 /* spacing on all sections */
-#title
+#title {
+  margin-top: 5%;
+  margin-bottom: 5%;
+}
+
 #main-section,
 #data-container,
 #drawChart {
