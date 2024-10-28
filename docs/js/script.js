@@ -11,10 +11,10 @@ document.addEventListener('DOMContentLoaded', function () {
             const dataContainer = document.getElementById('data-container');
             if (dataContainer) {
                 displayData(data);
-                displayCECChart(data);
             } else {
                 console.log('Element with id "data-container" not found');
             }
+
 
             const recentRoundsContainer = document.getElementById('recent-rounds');
             if (recentRoundsContainer) {
@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', function () {
             }
 
             displayChart(data);  // Call to display the chart using fetched data
-
+            displayCECChart(data);
         } catch (error) {
             console.log('Error fetching data:', error);
         }
