@@ -6,6 +6,11 @@ document.addEventListener('DOMContentLoaded', function () {
                 throw new Error(`HTTP error! Status: ${response.status}`);
             }
             const data = await response.json();
+
+            // Display filtered rounds where drawText2 contains "Canadian Experience Class"
+            const CECfilteredRounds = data.rounds.filter(round => round.drawText2.includes("Canadian Experience Class"));
+            console.log('CEC Filtered Rounds:', CECfilteredRounds); // For debugging purposes
+
             const dataContainer = document.getElementById('data-container');
             if (dataContainer) {
                 displayData(data);
@@ -21,9 +26,8 @@ document.addEventListener('DOMContentLoaded', function () {
             }
 
             displayChart(data);  // Call to display the chart using fetched data
+
         } catch (error) {
-            // document.getElementById('data-container').innerHTML = '<div class="alert alert-danger" role="alert">Error loading data.</div>';
-            // document.getElementById('recent-rounds').innerHTML = '<div class="alert alert-danger" role="alert">Error loading rounds data.</div>';
             console.log('Error fetching data:', error);
         }
     }
@@ -119,7 +123,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const layout = {
             title: 'Express Entry Draws Comparison (Line Chart)',
             autosize: true,  // Allow the chart to automatically size itself
-            height:800, 
+            height: 800,     // Set the minimum height to 800px
             xaxis: {
                 title: 'Draw Date',
                 tickangle: -45
@@ -137,10 +141,65 @@ document.addEventListener('DOMContentLoaded', function () {
         // Render the chart in the 'drawChart' div
         Plotly.newPlot('drawChart', chartData, layout);
     }
+    function displayChart(CECfilteredRounds) {
+        // Extract the necessary data from JSON for the chart
+        const drawDates = data.rounds.map(round => round.drawDate);
+        const drawSizes = data.rounds.map(round => parseInt(round.drawSize));
+        const drawCRS = data.rounds.map(round => parseInt(round.drawCRS));
 
-    const CECfilteredRounds = data.rounds.filter(round => round.drawText2.includes("Canadian Experience Class"));
+        // Create the bar chart using Plotly
+        const trace1 = {
+            x: drawDates,  // X-axis data (draw dates)
+            y: drawSizes,  // Y-axis data for Draw Sizes
+            name: 'Draw Size',
+            type: 'bar',
+            marker: {
+                color: 'rgba(75, 192, 192, 0.7)',
+                line: {
+                    color: 'rgba(75, 192, 192, 1)',
+                    width: 1.5
+                }
+            }
+        };
 
-    console.log(CECfilteredRounds);
+        const trace2 = {
+            x: drawDates,  // X-axis data (draw dates)
+            y: drawCRS,    // Y-axis data for CRS Scores
+            name: 'CRS Score',
+            type: 'scatter',  // 
+            mode: 'lines+markers',  // Line with markers
+            line: {
+                color: 'rgba(153, 102, 255, 1)',
+                width: 2
+            },
+            marker: {
+                color: 'rgba(153, 102, 255, 1)',
+                size: 8
+            }
+        };
+
+        // Layout for the chart with autosizing
+        const layout = {
+            title: 'Express Entry Draws Comparison (Line Chart)',
+            autosize: true,  // Allow the chart to automatically size itself
+            height: 800,     // Set the minimum height to 800px
+            xaxis: {
+                title: 'Draw Date',
+                tickangle: -45
+            },
+            yaxis: {
+                title: 'Values',
+                showgrid: true,
+                zeroline: true
+            }
+        };
+
+        // Data array containing both traces
+        const chartData = [trace1, trace2];
+
+        // Render the chart in the 'drawChart' div
+        Plotly.newPlot('drawCECChart', chartData, layout);
+    }
 
     // Fetch data when DOM is fully loaded
     fetchData();
