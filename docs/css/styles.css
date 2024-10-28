@@ -71,7 +71,8 @@
 
 #main-section,
 #data-container,
-#drawChart {
+#drawChart,
+#recent-rounds {
   margin-top: 4rem;
   padding-top: 4rem;
 }
