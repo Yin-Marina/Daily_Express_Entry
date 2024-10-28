@@ -1,32 +1,3 @@
-// document.addEventListener('DOMContentLoaded', function () {
-//     const jsonContainer = document.getElementById('json-data');
-
-//     // Function to fetch and display the JSON
-//     async function fetchJSON() {
-//         try {
-//             // Fetching JSON data from the provided URL
-//             const response = await fetch('https://www.canada.ca/content/dam/ircc/documents/json/ee_rounds_123_en.json');
-
-//             // Check if the response is OK
-//             if (!response.ok) {
-//                 throw new Error(`HTTP error! Status: ${response.status}`);
-//             }
-
-//             // Parse the JSON from the response
-//             const data = await response.json();
-
-//             // Display the JSON data in a readable format
-//             jsonContainer.innerHTML = `<pre>${JSON.stringify(data, null, 2)}</pre>`;
-//         } catch (error) {
-//             // If there's an error, display it on the page
-//             jsonContainer.innerHTML = `<div class="error">Error fetching data: ${error.message}</div>`;
-//         }
-//     }
-
-//     // Fetch and display the JSON when the page is loaded
-//     fetchJSON();
-// });
-
 document.addEventListener('DOMContentLoaded', function () {
     async function fetchData() {
         try {
@@ -166,6 +137,10 @@ document.addEventListener('DOMContentLoaded', function () {
         // Render the chart in the 'drawChart' div
         Plotly.newPlot('drawChart', chartData, layout);
     }
+
+    const CECfilteredRounds = data.rounds.filter(round => round.drawText2.includes("Canadian Experience Class"));
+
+    console.log(CECfilteredRounds);
 
     // Fetch data when DOM is fully loaded
     fetchData();
