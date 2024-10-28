@@ -145,14 +145,14 @@ document.addEventListener('DOMContentLoaded', function () {
         console.log('CEC Filtered Rounds:', CECfilteredRounds);
 
         // Extract the necessary data from the array for the chart
-        const drawDates = CECfilteredRounds.map(round => round.drawDate);
-        const drawSizes = CECfilteredRounds.map(round => parseInt(round.drawSize));
-        const drawCRS = CECfilteredRounds.map(round => parseInt(round.drawCRS));
+        const drawDates_CEC = CECfilteredRounds.map(round => round.drawDate);
+        const drawSizes_CEC = CECfilteredRounds.map(round => parseInt(round.drawSize));
+        const drawCRS_CEC = CECfilteredRounds.map(round => parseInt(round.drawCRS));
 
         // Create the bar chart using Plotly
-        const trace1 = {
-            x: drawDates,  // X-axis data (draw dates)
-            y: drawSizes,  // Y-axis data for Draw Sizes
+        const CEC_trace1 = {
+            x: drawDates_CEC,  // X-axis data (draw dates)
+            y: drawSizes_CEC,  // Y-axis data for Draw Sizes
             name: 'Draw Size',
             type: 'bar',
             marker: {
@@ -164,9 +164,9 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         };
 
-        const trace2 = {
-            x: drawDates,  // X-axis data (draw dates)
-            y: drawCRS,    // Y-axis data for CRS Scores
+        const CEC_trace2 = {
+            x: drawDates_CEC,  // X-axis data (draw dates)
+            y: drawCRS_CEC,    // Y-axis data for CRS Scores
             name: 'CRS Score',
             type: 'scatter',  // 
             mode: 'lines+markers',  // Line with markers
@@ -181,7 +181,7 @@ document.addEventListener('DOMContentLoaded', function () {
         };
 
         // Layout for the chart with autosizing
-        const layout = {
+        const CEC_layout = {
             title: 'Express Entry Draws Comparison (Line Chart)',
             autosize: true,  // Allow the chart to automatically size itself
             height: 800,     // Set the minimum height to 800px
@@ -197,10 +197,10 @@ document.addEventListener('DOMContentLoaded', function () {
         };
 
         // Data array containing both traces
-        const chartData = [trace1, trace2];
+        const CEC_chartData = [trace1, trace2];
 
         // Render the chart in the 'drawChart' div
-        Plotly.newPlot('drawCECChart', chartData, layout);
+        Plotly.newPlot('drawCECChart', CEC_chartData, layout);
     }
 
 
