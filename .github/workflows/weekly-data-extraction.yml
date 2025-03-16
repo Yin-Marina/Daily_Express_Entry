@@ -5,6 +5,9 @@ on:
     - cron: '0 1 * * 1'  # Runs every Monday at 1:00 AM UTC
   workflow_dispatch:  # Allows manual triggering
 
+permissions:
+  contents: write  # Grants permission to push changes
+
 jobs:
   extract:
     runs-on: ubuntu-latest
