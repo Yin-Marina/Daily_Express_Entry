@@ -1,20 +1,20 @@
 document.addEventListener('DOMContentLoaded', function () {
-    async function fetchData() {
+    async function loadLocalData() {
         try {
-            const response = await fetch('https://www.canada.ca/content/dam/ircc/documents/json/ee_rounds_123_en.json');
+            // Fetch JSON from local file
+            const response = await fetch('../json/ee_rounds_123_en.json');
             if (!response.ok) {
                 throw new Error(`HTTP error! Status: ${response.status}`);
             }
             const data = await response.json();
 
-
+            // Display data in the page elements
             const dataContainer = document.getElementById('data-container');
             if (dataContainer) {
                 displayData(data);
             } else {
                 console.log('Element with id "data-container" not found');
             }
-
 
             const recentRoundsContainer = document.getElementById('recent-rounds');
             if (recentRoundsContainer) {
@@ -23,10 +23,11 @@ document.addEventListener('DOMContentLoaded', function () {
                 console.log('Element with id "recent-rounds" not found');
             }
 
-            displayChart(data);  // Call to display the chart using fetched data
+            // Display charts
+            displayChart(data);
             displayCECChart(data);
         } catch (error) {
-            console.log('Error fetching data:', error);
+            console.error('Error loading local JSON file:', error);
         }
     }
 
@@ -42,7 +43,7 @@ document.addEventListener('DOMContentLoaded', function () {
     function displayRecentRounds(rounds) {
         const container = document.getElementById('recent-rounds');
         if (rounds && Array.isArray(rounds) && rounds.length > 0) {
-            container.innerHTML = createRecentRoundsTable(rounds.slice(0, 10)); // Display only the latest 10 rounds
+            container.innerHTML = createRecentRoundsTable(rounds.slice(0, 10)); // Display latest 10 rounds
         } else {
             container.innerHTML = '<div class="alert alert-warning" role="alert">No recent rounds available.</div>';
         }
@@ -81,130 +82,82 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function displayChart(data) {
-        // Extract the necessary data from JSON for the chart
         const drawDates = data.rounds.map(round => round.drawDate);
         const drawSizes = data.rounds.map(round => parseInt(round.drawSize));
         const drawCRS = data.rounds.map(round => parseInt(round.drawCRS));
 
-        // Create the bar chart using Plotly
         const trace1 = {
-            x: drawDates,  // X-axis data (draw dates)
-            y: drawSizes,  // Y-axis data for Draw Sizes
+            x: drawDates,
+            y: drawSizes,
             name: 'Draw Size',
             type: 'bar',
             marker: {
                 color: 'rgba(75, 192, 192, 0.7)',
-                line: {
-                    color: 'rgba(75, 192, 192, 1)',
-                    width: 1.5
-                }
+                line: { color: 'rgba(75, 192, 192, 1)', width: 1.5 }
             }
         };
 
         const trace2 = {
-            x: drawDates,  // X-axis data (draw dates)
-            y: drawCRS,    // Y-axis data for CRS Scores
+            x: drawDates,
+            y: drawCRS,
             name: 'CRS Score',
-            type: 'scatter',  // 
-            mode: 'lines+markers',  // Line with markers
-            line: {
-                color: 'rgba(153, 102, 255, 1)',
-                width: 2
-            },
-            marker: {
-                color: 'rgba(153, 102, 255, 1)',
-                size: 8
-            }
+            type: 'scatter',
+            mode: 'lines+markers',
+            line: { color: 'rgba(153, 102, 255, 1)', width: 2 },
+            marker: { color: 'rgba(153, 102, 255, 1)', size: 8 }
         };
 
-        // Layout for the chart with autosizing
         const layout = {
             title: 'Express Entry Draws Comparison (Line Chart)',
-            autosize: true,  // Allow the chart to automatically size itself
-            height: 800,     // Set the minimum height to 800px
-            xaxis: {
-                title: 'Draw Date',
-                tickangle: -45
-            },
-            yaxis: {
-                title: 'Values',
-                showgrid: true,
-                zeroline: true
-            }
+            autosize: true,
+            height: 800,
+            xaxis: { title: 'Draw Date', tickangle: -45 },
+            yaxis: { title: 'Values', showgrid: true, zeroline: true }
         };
 
-        // Data array containing both traces
-        const chartData = [trace1, trace2];
-
-        // Render the chart in the 'drawChart' div
-        Plotly.newPlot('drawChart', chartData, layout);
+        Plotly.newPlot('drawChart', [trace1, trace2], layout);
     }
+
     function displayCECChart(data) {
-        // Display filtered rounds where drawText2 contains "Canadian Experience Class"
         const CECfilteredRounds = data.rounds.filter(round => round.drawText2.includes("Canadian Experience Class"));
         console.log('CEC Filtered Rounds:', CECfilteredRounds);
 
-        // Extract the necessary data from the array for the chart
         const drawDates_CEC = CECfilteredRounds.map(round => round.drawDate);
         const drawSizes_CEC = CECfilteredRounds.map(round => parseInt(round.drawSize));
         const drawCRS_CEC = CECfilteredRounds.map(round => parseInt(round.drawCRS));
 
-        // Create the bar chart using Plotly
         const CEC_trace1 = {
-            x: drawDates_CEC,  // X-axis data (draw dates)
-            y: drawSizes_CEC,  // Y-axis data for Draw Sizes
+            x: drawDates_CEC,
+            y: drawSizes_CEC,
             name: 'Draw Size',
             type: 'bar',
             marker: {
                 color: 'rgba(75, 192, 192, 0.7)',
-                line: {
-                    color: 'rgba(75, 192, 192, 2)',
-                    width: 1.5
-                }
+                line: { color: 'rgba(75, 192, 192, 2)', width: 1.5 }
             }
         };
 
         const CEC_trace2 = {
-            x: drawDates_CEC,  // X-axis data (draw dates)
-            y: drawCRS_CEC,    // Y-axis data for CRS Scores
+            x: drawDates_CEC,
+            y: drawCRS_CEC,
             name: 'CRS Score',
-            type: 'scatter',  // 
-            mode: 'lines+markers',  // Line with markers
-            line: {
-                color: 'rgba(153, 102, 255, 1)',
-                width: 2
-            },
-            marker: {
-                color: 'rgba(153, 102, 255, 1)',
-                size: 8
-            }
+            type: 'scatter',
+            mode: 'lines+markers',
+            line: { color: 'rgba(153, 102, 255, 1)', width: 2 },
+            marker: { color: 'rgba(153, 102, 255, 1)', size: 8 }
         };
 
-        // Layout for the chart with autosizing
         const CEC_layout = {
             title: 'Canadian Experience Class Express Entry Draws Comparison (Line Chart)',
-            autosize: true,  // Allow the chart to automatically size itself
-            height: 800,     // Set the minimum height to 800px
-            xaxis: {
-                title: 'Draw Date',
-                tickangle: -45
-            },
-            yaxis: {
-                title: 'Values',
-                showgrid: true,
-                zeroline: true
-            }
+            autosize: true,
+            height: 800,
+            xaxis: { title: 'Draw Date', tickangle: -45 },
+            yaxis: { title: 'Values', showgrid: true, zeroline: true }
         };
 
-        // Data array containing both traces
-        const CEC_chartData = [CEC_trace1, CEC_trace2];
-
-        // Render the chart in the 'drawCECChart' div
-        Plotly.newPlot('drawCECChart', CEC_chartData, CEC_layout);
+        Plotly.newPlot('drawCECChart', [CEC_trace1, CEC_trace2], CEC_layout);
     }
 
-
-
-    // Fetch data when DOM is fully loaded
-    fetchData();
+    // Load local data when the DOM is fully loaded
+    loadLocalData();
 });
