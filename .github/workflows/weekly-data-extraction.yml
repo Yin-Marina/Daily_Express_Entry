@@ -39,7 +39,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: extracted-data
-          path: path/to/extracted/data  # Replace with the path to your extracted data
+          path: ../json  # Replace with the path to your extracted data
 
       # Optionally: Commit extracted data back to the repository
       - name: Commit extracted data
