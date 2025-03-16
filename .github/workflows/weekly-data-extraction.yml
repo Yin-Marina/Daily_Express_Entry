@@ -19,9 +19,9 @@ jobs:
 
       # Set up any dependencies or programming environment needed for data extraction
       - name: Set up Python
-        uses: actions/setup-python@v3
+        uses: actions/setup-python@v4
         with:
-          python-version: '3.x'  # Use your desired Python version
+          python-version: '3.10'  # Use your desired Python version
 
       # Install dependencies (if needed, for example, from requirements.txt)
       - name: Install dependencies
@@ -39,7 +39,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: extracted-data
-          path: ../json  # Replace with the path to your extracted data
+          path: json/ee_rounds_123_en.json  # Replace with the path to your extracted data
 
       # Optionally: Commit extracted data back to the repository
       - name: Commit extracted data
