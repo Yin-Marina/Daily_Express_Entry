@@ -1,53 +1,50 @@
 name: Weekly Data Extraction
 
-# Trigger this workflow every week on Monday at 1:00 AM UTC
 on:
   schedule:
-    - cron: '0 1 * * 1'  # This cron expression means every Monday at 1:00 AM UTC
-
-  # Optionally, you can also allow manual triggering
-  workflow_dispatch:
+    - cron: '0 1 * * 1'  # Runs every Monday at 1:00 AM UTC
+  workflow_dispatch:  # Allows manual triggering
 
 jobs:
   extract:
     runs-on: ubuntu-latest
 
     steps:
-      # Checkout the repository
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      # Set up any dependencies or programming environment needed for data extraction
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.10'  # Use your desired Python version
+          python-version: '3.10'
 
-      # Install dependencies (if needed, for example, from requirements.txt)
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
           pip install requests
 
-      # Run the data extraction script 
       - name: Run data extraction script
-        run: |
-          python extract_data.py  # This is the script where your data extraction logic resides
+        run: python extract_data.py
 
-      # Optionally: Upload the extracted data as an artifact
-      - name: Upload extracted data
+      - name: Debug - Check Directory and Files
+        run: |
+          echo "Current Directory:"
+          pwd
+          echo "Listing All Files:"
+          ls -R
+
+      - name: Upload extracted data as an artifact
         uses: actions/upload-artifact@v4
         with:
           name: extracted-data
-          path: json/ee_rounds_123_en.json  # Replace with the path to your extracted data
+          path: json/ee_rounds_123_en.json  # Ensure this path matches where your script saves the file
 
-      # Optionally: Commit extracted data back to the repository
-      - name: Commit extracted data
+      - name: Commit and Push Extracted Data
         run: |
-          git config --local user.name "github-actions[bot]"
-          git config --local user.email "github-actions[bot]@users.noreply.github.com"
-          git add path/to/extracted/data
-          git commit -m "Automated weekly data extraction"
-          git push
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add json/ee_rounds_123_en.json
+          git commit -m "Automated weekly data extraction" || echo "No changes to commit"
+          git push origin main
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
