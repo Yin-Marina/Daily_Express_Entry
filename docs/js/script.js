@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', function () {
     async function loadLocalData() {
         try {
             // Fetch JSON from local file
-            const response = await fetch('../json/ee_rounds_123_en.json');
+            const response = await fetch('/json/ee_rounds_123_en.json');
             if (!response.ok) {
                 throw new Error(`HTTP error! Status: ${response.status}`);
             }
