@@ -15,7 +15,7 @@ jobs:
     steps:
       # Checkout the repository
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       # Set up any dependencies or programming environment needed for data extraction
       - name: Set up Python
@@ -36,7 +36,7 @@ jobs:
 
       # Optionally: Upload the extracted data as an artifact
       - name: Upload extracted data
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: extracted-data
           path: json/ee_rounds_123_en.json  # Replace with the path to your extracted data
