@@ -29,7 +29,7 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      # Run the data extraction script (replace 'extract_data.py' with your script name)
+      # Run the data extraction script 
       - name: Run data extraction script
         run: |
           python extract_data.py  # This is the script where your data extraction logic resides
