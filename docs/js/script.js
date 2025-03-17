@@ -9,27 +9,36 @@ document.addEventListener('DOMContentLoaded', function () {
             }
             
             const data = await response.json();
-            console.log("JSON Data Loaded:", data);  // Debugging log
-            
-            // Ensure container exists before updating it
-            const poolTableContainer = document.getElementById('pool-distribution-container');
-            if (!poolTableContainer) {
-                console.error("Element with id 'pool-distribution-container' not found.");
-                return;
+            console.log("JSON Data Loaded:", data);
+    
+            // Check if elements exist before calling display functions
+            if (document.getElementById('data-container')) {
+                displayData(data);
+            } else {
+                console.warn('Skipping: Element with id "data-container" not found.');
             }
     
-            displayPoolDistribution(data); // Call function to update HTML
+            if (document.getElementById('recent-rounds')) {
+                displayRecentRounds(data.rounds);
+            } else {
+                console.warn('Skipping: Element with id "recent-rounds" not found.');
+            }
+    
+            if (document.getElementById('drawChart')) {
+                displayChart(data);
+            } else {
+                console.warn('Skipping: Element with id "drawChart" not found.');
+            }
+    
+            displayPoolDistribution(data); // This will still run
+    
         } catch (error) {
             console.error('Error loading local JSON file:', error);
-            
-            // Show an error message in the UI
-            document.getElementById('pool-distribution-container').innerHTML = `
-                <div class="alert alert-danger">⚠️ Error loading data. Please check if the JSON file exists and is accessible.</div>
-            `;
+            document.getElementById('pool-distribution-container').innerHTML =
+                '<div class="alert alert-danger">⚠️ Error loading data. Check if the JSON file exists.</div>';
         }
     }
-
-
+  
     function displayPoolDistribution(data) {
         console.log("Updating Pool Distribution Table...");
     
