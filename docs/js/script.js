@@ -1,34 +1,31 @@
 document.addEventListener('DOMContentLoaded', function () {
     async function loadLocalData() {
         try {
-            // Fetch JSON from local file
+            console.log("Fetching JSON data...");
             const response = await fetch('https://yin-marina.github.io/Daily_Express_Entry/json/ee_rounds_123_en.json');
+            
             if (!response.ok) {
                 throw new Error(`HTTP error! Status: ${response.status}`);
             }
+            
             const data = await response.json();
-
-            // Display data in the page elements
-            const dataContainer = document.getElementById('data-container');
-            if (dataContainer) {
-                displayData(data);
-            } else {
-                console.log('Element with id "data-container" not found');
+            console.log("JSON Data Loaded:", data);  // Debugging log
+            
+            // Ensure container exists before updating it
+            const poolTableContainer = document.getElementById('pool-distribution-container');
+            if (!poolTableContainer) {
+                console.error("Element with id 'pool-distribution-container' not found.");
+                return;
             }
-
-            const recentRoundsContainer = document.getElementById('recent-rounds');
-            if (recentRoundsContainer) {
-                displayRecentRounds(data.rounds);
-            } else {
-                console.log('Element with id "recent-rounds" not found');
-            }
-
-            // Display charts
-            displayChart(data);
-            displayCECChart(data);
-            displayPoolDistribution(data);
+    
+            displayPoolDistribution(data); // Call function to update HTML
         } catch (error) {
             console.error('Error loading local JSON file:', error);
+            
+            // Show an error message in the UI
+            document.getElementById('pool-distribution-container').innerHTML = `
+                <div class="alert alert-danger">⚠️ Error loading data. Please check if the JSON file exists and is accessible.</div>
+            `;
         }
     }
 
