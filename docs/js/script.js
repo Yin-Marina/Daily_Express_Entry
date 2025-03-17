@@ -26,6 +26,7 @@ document.addEventListener('DOMContentLoaded', function () {
             // Display charts
             displayChart(data);
             displayCECChart(data);
+            displayPoolDistribution(data);
         } catch (error) {
             console.error('Error loading local JSON file:', error);
         }
