@@ -34,44 +34,39 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
     function displayPoolDistribution(data) {
+        console.log("Updating Pool Distribution Table...");
+    
         const poolTableContainer = document.getElementById('pool-distribution-container');
-
+    
         if (!poolTableContainer) {
-            console.error("Element with id 'pool-distribution-container' not found.");
+            console.error("Error: 'pool-distribution-container' not found.");
             return;
         }
-
+    
         if (!data.rounds || data.rounds.length === 0) {
-            poolTableContainer.innerHTML = '<div class="alert alert-warning" role="alert">No pool distribution data available.</div>';
+            poolTableContainer.innerHTML = '<div class="alert alert-warning">⚠️ No pool distribution data available.</div>';
             return;
         }
-
-        // Extract the latest round's distribution data
+    
         const latestRound = data.rounds[0];
-        const drawDistributionAsOn = latestRound.drawDistributionAsOn;
-        const dd2 = latestRound.dd2;
-
-        // Create the table
+        console.log("Latest Round Data:", latestRound);  // Debugging log
+    
+        const drawDistributionAsOn = latestRound.drawDistributionAsOn || "N/A";
+        const dd2 = latestRound.dd2 || "N/A";
+    
         let tableHTML = `<h3>Pool Distribution as of ${drawDistributionAsOn}</h3>`;
         tableHTML += `<table class="table table-bordered">
                         <thead class="thead-dark">
-                            <tr>
-                                <th>Date</th>
-                                <th>CRS 601-1200</th>
-                            </tr>
+                            <tr><th>Date</th><th>CRS 601-1200</th></tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>${drawDistributionAsOn}</td>
-                                <td>${dd2}</td>
-                            </tr>
+                            <tr><td>${drawDistributionAsOn}</td><td>${dd2}</td></tr>
                         </tbody>
-                    </table>`;
-
-        // Insert the table into the container
+                      </table>`;
+    
         poolTableContainer.innerHTML = tableHTML;
     }
-
+    
     function displayData(data) {
         const container = document.getElementById('data-container');
         if (data.rounds && Array.isArray(data.rounds) && data.rounds.length > 0) {
