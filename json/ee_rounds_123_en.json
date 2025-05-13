@@ -1,6 +1,40 @@
 {
   "classes": "wb-tables",
-  "rounds": [
+  "rounds": [ 
+      {
+      "drawNumber":"346"
+      ,"drawNumberURL":"<a href='/content/canadasite/en/immigration-refugees-citizenship/corporate/mandate/policies-operational-instructions-agreements/ministerial-instructions/express-entry-rounds/invitations.html?q=346'>346</a>",
+      "drawDate":"2025-05-12",
+      "drawDateFull":"May 12, 2025",
+      "drawName":"Provincial Nominee Program",
+      "drawSize":"511",
+      "drawCRS":"706",
+      "mitext":"<a href='/content/canadasite/en/immigration-refugees-citizenship/corporate/mandate/policies-operational-instructions-agreements/ministerial-instructions/express-entry-rounds/invitations.html?q=346'>Invitations to apply for permanent residence under the Express Entry system #346</a>",
+      "DrawText1":"<a href='/content/canadasite/en/immigration-refugees-citizenship/corporate/mandate/policies-operational-instructions-agreements/ministerial-instructions/express-entry-rounds/invitations.html?q=346'>See full text of Ministerial Instruction</a>",
+      "drawText2":"Provincial Nominee Program",
+      "drawDateTime":"May 12, 2025 at 14:14:40 UTC",
+      "drawCutOff":"March 04, 2025 at 22:35:42 UTC",
+      "drawDistributionAsOn":"May 12, 2025",
+      "dd1":"513",
+      "dd2":"22,316",
+      "dd3":"73,582",
+      "dd4":"12,399",
+      "dd5":"12,663",
+      "dd6":"16,612",
+      "dd7":"16,663",
+      "dd8":"15,245",
+      "dd9":"69,467",
+      "dd10":"14,401",
+      "dd11":"15,200",
+      "dd12":"13,675",
+      "dd13":"13,552",
+      "dd14":"12,639",
+      "dd15":"53,598",
+      "dd16":"22,051",
+      "dd17":"8,442",
+      "dd18":"249,969"
+      },
+  
       {
       "drawNumber":"345",
       "drawNumberURL":"<a href='/content/canadasite/en/immigration-refugees-citizenship/corporate/mandate/policies-operational-instructions-agreements/ministerial-instructions/express-entry-rounds/invitations.html?q=345'>345</a>",
